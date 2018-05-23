@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Blogpost from './Blogpost';
+import NavBar from './Header';
 
 const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
@@ -56,11 +57,13 @@ class Home extends Component {
   render() {
     return (
       <Container>
-        <Header>
-        <img src={require('../assets/pear.png')} width="50" height="50" />
-          FOODS
-        </Header>
+        <NavBar/>
         <Body>
+          <Blogpost></Blogpost>
+          <Blogpost></Blogpost>
+          <Blogpost></Blogpost>
+          <Blogpost></Blogpost>
+          <Blogpost></Blogpost>
           <Blogpost></Blogpost>
           <Blogpost></Blogpost>
           <Blogpost></Blogpost>
