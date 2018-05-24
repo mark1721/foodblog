@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 const BodyContainer = styled.div`
   padding-left: 5%;
   padding-right: 5%;
+  height: 250px;
 `
 const Hr = styled.hr`
   color: black;
@@ -27,43 +28,50 @@ const LeftContainer = styled.div`
   float:left;
 `
 const RightContainer = styled.div`
-
+ width: 80%;
 `
 const SeeMore = styled.div`
   text-align: right;
   font-size: 0.8em;
 `
-
+const Text = styled.h2`
+  text-align: right;
+  padding-right: 150px;
+  font-size: 1em;
+`
 class Blogpost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      msg : ""
+      msg : "",
+      author: "",
+      date: "",
     }
   }
 
   componentWillMount() {
-    fetch('https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1').
-    then(res => {
-      return res.json();
-    })
-    .then(data => {
-      this.setState({
-        msg: data[0],
-      })
-    })
+    let date = this.props.date;
+    this.setState({
+      msg: this.props.message,
+      id: this.props.id,
+      author: this.props.author,
+      date: date,
+    });
   }
+
   render() {
     return (
       <Wrapper>
         <Title>
           <img src={require('../assets/logo.jpg')} width="100" height="75" />
           Filipino Style Carinderia
-          <Hr/>
         </Title>
+        <Text>Author: {this.state.author}</Text>
+        <Hr/>
         <BodyContainer>
           <LeftContainer>
-            <img src={require('../assets/atom.png')} width="100" height="100" />
+            {this.state.date}
+            <img src={require('../assets/atom.png')} width="100" height="150" />
           </LeftContainer>
           <RightContainer>{this.state.msg}</RightContainer>
         </BodyContainer>

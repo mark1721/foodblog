@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Blogpost from './Blogpost';
 import NavBar from './Header';
+import PostForm from './PostForm';
 
 const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
   padding-right: 60px;
   padding-left: 60px;
-  // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  // transition: 0.3s;
 `
 const Header = styled.div`
   padding-top: 15px;
@@ -38,37 +37,33 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      msg : ""
+      blogposts : []
     }
   }
 
   componentDidMount() {
-    fetch('https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1').
+    fetch('http://localhost:3001/getposts').
     then(res => {
       return res.json();
     })
     .then(data => {
       this.setState({
-        msg: data[0],
-      })
+        blogposts: data.blogposts,
+      });
+      console.log(data);
     })
   }
+
 
   render() {
     return (
       <Container>
         <NavBar/>
         <Body>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
-          <Blogpost></Blogpost>
+          <PostForm/>
+           {this.state.blogposts.map(post => (
+            <Blogpost date={post.createdAt} key={post._id} message={post.data} author={post.author}/>
+          ))}
         </Body>
       </Container>
 

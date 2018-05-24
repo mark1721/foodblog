@@ -7,31 +7,17 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  navBar: {
-    color: 'white',
-  }
-};
+import styled from 'styled-components';
 
 class NavBar extends Component {
   render() {
     return (
-      <AppBar color="default" className={styles.navBar} position="static">
+      <AppBar color="primary" position="static">
         <Toolbar>
-          <IconButton className={styles.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon showMenuIconButton="true" />
+          <IconButton color="inherit" aria-label="Menu">
+            <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="inherit" className={styles.flex}>
+          <Typography variant="title" color="inherit">
             Food.com
           </Typography>
         </Toolbar>
