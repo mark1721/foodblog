@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import img from '../assets/atom.png';
+import img from '../../assets/atom.png';
+
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
 
 const Title = styled.h1`
-  padding-top: 10px;
+  padding-left: 15px;
+  float: left;
   text-align: center;
 `
 const Wrapper = styled.div`
@@ -39,6 +43,10 @@ const Text = styled.h2`
   padding-right: 150px;
   font-size: 1em;
 `
+const AlignButton = styled.div`
+  float: right;
+  padding-left: 25px;
+`
 class Blogpost extends Component {
   constructor(props) {
     super(props);
@@ -63,15 +71,20 @@ class Blogpost extends Component {
     return (
       <Wrapper>
         <Title>
-          <img src={require('../assets/logo.jpg')} width="100" height="75" />
+          <img src={require('../../assets/logo.jpg')} alt="logo" width="100" height="75" />
           Filipino Style Carinderia
-        </Title>
-        <Text>Author: {this.state.author}</Text>
+          <Text>Author: {this.state.author}</Text>
+        </Title><br/>
+        <AlignButton>
+          <Button variant="fab" color="primary" aria-label="edit">
+            <Icon>edit_icon</Icon>
+          </Button>
+        </AlignButton>
         <Hr/>
         <BodyContainer>
           <LeftContainer>
             {this.state.date}
-            <img src={require('../assets/atom.png')} width="100" height="150" />
+            <img src={require('../../assets/atom.png')} alt="blogpost thumbnail" width="100" height="150" />
           </LeftContainer>
           <RightContainer>{this.state.msg}</RightContainer>
         </BodyContainer>

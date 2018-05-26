@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../themes/App.css';
 
-import Home from './Home';
+import Sidebar from './Sidebar';
 
 class App extends Component {
   render() {
     return (
-      <Home/>
+      <Sidebar/>
     );
   }
 }
